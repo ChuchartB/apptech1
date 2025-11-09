@@ -1,0 +1,227 @@
+/* สีที่ใช้:
+   - Body Background: #1c322b (เขียวเข้มแบบป่าลึก)
+   - Element Background: #283f38 (เข้มกว่าเล็กน้อยสำหรับ Header/Card)
+   - Text/Highlights: #d0ffd0 (เขียวอ่อนเกือบขาว)
+   - Accent/Glow Color (Neon Green): #00ff80 (เขียวนีออนเรืองแสง)
+*/
+
+body {
+  margin: 0;
+  font-family: "Noto Sans Thai", system-ui, sans-serif;
+  background-color: #1c322b; /* พื้นหลังสีเขียวเข้ม */
+  color: #d0ffd0; /* สีข้อความหลักเป็นเขียวอ่อน */
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+header {
+  text-align: center;
+  padding: 40px 16px 20px 16px;
+  background-color: #283f38; /* พื้นหลัง Header เข้ม */
+  border-bottom: 2px solid #00ff80; /* เส้นแบ่งสีเขียวนีออน */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+header h1 {
+  margin-top: 0;
+  margin-bottom: 8px;
+  font-size: 32px;
+  color: #00ff80; /* หัวข้อสีเขียวนีออน */
+  letter-spacing: 1px;
+  text-shadow: 0 0 10px rgba(0, 255, 128, 0.8); /* เพิ่มเงาเรืองแสงที่หัวข้อ */
+}
+
+header p {
+  margin: 0;
+  color: #a0cda8;
+  font-size: 16px;
+}
+
+main {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 25px;
+  padding: 40px 16px;
+  flex-grow: 1;
+}
+
+/* **สไตล์ของการ์ด (Article Card)** */
+article {
+  border: 1px solid #3d5a52; /* เส้นขอบเข้ม */
+  background-color: #283f38; /* พื้นหลังการ์ดเข้ม */
+  border-radius: 12px;
+  padding: 20px;
+  text-align: center;
+  max-width: 250px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+  cursor: pointer;
+  transition: all 0.5s cubic-bezier(0.2, 0.8, 0.4, 1);
+}
+
+/* **ลูกเล่นเมื่อโฮเวอร์ (Hover Effect: Neon Glow & Lift)** */
+article:hover {
+  transform: translateY(-12px) scale(1.05);
+  border-color: #00ff80;
+  box-shadow: 0 0 40px rgba(0, 255, 128, 0.7),
+              0 15px 30px rgba(0, 0, 0, 0.6);
+}
+
+article img {
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
+  margin-bottom: 15px;
+  /* **การแก้ไข: ลบขอบขาวของโลโก้ และเพิ่มเงาเรืองแสงนีออน** */
+  background-color: transparent; /* ทำให้พื้นหลังของรูปโปร่งใส (ถ้ามีพื้นหลังเดิม) */
+  border: none; /* ลบเส้นขอบ (ถ้ามี) */
+  filter: drop-shadow(0 0 8px rgba(0, 255, 128, 0.6)); /* เพิ่มเงาเรืองแสงนีออน */
+}
+
+article h2 {
+  margin: 10px 0 8px;
+  font-size: 22px;
+  color: #ffffff;
+}
+
+article p {
+  margin: 0 0 15px;
+  color: #a0cda8;
+  font-size: 15px;
+  min-height: 45px;
+}
+
+article button {
+  border: none;
+  background: #00ff80;
+  color: #1c322b;
+  padding: 10px 20px;
+  border-radius: 25px;
+  cursor: pointer;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  transition: background-color 0.2s, transform 0.2s, box-shadow 0.2s;
+}
+
+article button:hover {
+  background-color: #00e573;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0, 255, 128, 0.6);
+}
+
+footer {
+  text-align: center;
+  color: #a0cda8;
+  font-size: 13px;
+  padding: 20px 0;
+  margin-top: auto;
+  border-top: 1px solid #3d5a52;
+  background-color: #283f38;
+}
+
+/* **สไตล์ Overlay (Modal) - จัดเต็มความอลังการ** */
+#overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.9);
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+  backdrop-filter: blur(10px);
+}
+
+.overlay-box {
+  background-color: #1c322b;
+  border: 3px solid #00ff80;
+  border-radius: 15px;
+  padding: 30px;
+  max-width: 400px;
+  width: 90%;
+  text-align: center;
+  box-shadow: 0 0 60px rgba(0, 255, 128, 0.8),
+              inset 0 0 15px rgba(0, 255, 128, 0.3);
+  transform: scale(1);
+  animation: popin 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+}
+
+@keyframes popin {
+  from {
+    opacity: 0;
+    transform: scale(0.6);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.overlay-box img {
+  width: 120px;
+  height: 120px;
+  object-fit: contain;
+  margin-bottom: 20px;
+  /* **การแก้ไข: ลบขอบขาวของโลโก้ใน Overlay และเพิ่มเงาเรืองแสงนีออน** */
+  background-color: transparent;
+  border: none;
+  filter: drop-shadow(0 0 10px rgba(0, 255, 128, 0.8)); /* เงาเรืองแสงที่ใหญ่ขึ้น */
+}
+
+.overlay-box h2 {
+    font-size: 32px;
+    margin-bottom: 10px;
+    color: #00ff80;
+    text-shadow: 0 0 5px rgba(0, 255, 128, 0.6);
+}
+
+.overlay-box p {
+    font-size: 17px;
+    color: #d0ffd0;
+    margin-bottom: 25px;
+}
+
+
+.overlay-box a,
+.overlay-box button {
+  display: inline-block;
+  border: none;
+  border-radius: 25px;
+  padding: 10px 20px;
+  text-decoration: none;
+  cursor: pointer;
+  margin: 5px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  transition: background-color 0.3s, transform 0.1s, box-shadow 0.3s;
+}
+
+.overlay-box a {
+    background-color: #3498db;
+    color: #ffffff;
+}
+
+.overlay-box a:hover {
+    background-color: #2980b9;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(52, 152, 219, 0.5);
+}
+
+.overlay-box button {
+    background-color: #e74c3c;
+    color: #ffffff;
+}
+
+.overlay-box button:hover {
+    background-color: #c0392b;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(231, 76, 60, 0.5);
+}
+
+
+body.modal-open {
+  overflow: hidden;
+}
