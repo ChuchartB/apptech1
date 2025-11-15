@@ -1,227 +1,106 @@
-/* สีที่ใช้:
-   - Body Background: #1c322b (เขียวเข้มแบบป่าลึก)
-   - Element Background: #283f38 (เข้มกว่าเล็กน้อยสำหรับ Header/Card)
-   - Text/Highlights: #d0ffd0 (เขียวอ่อนเกือบขาว)
-   - Accent/Glow Color (Neon Green): #00ff80 (เขียวนีออนเรืองแสง)
-*/
-
-body {
-  margin: 0;
-  font-family: "Noto Sans Thai", system-ui, sans-serif;
-  background-color: #1c322b; /* พื้นหลังสีเขียวเข้ม */
-  color: #d0ffd0; /* สีข้อความหลักเป็นเขียวอ่อน */
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
+:root{
+  --bg:#fff0f6;
+  --card:#fff6fb;
+  --accent:#ff8fb3;
+  --accent-2:#ffb6d6;
+  --text:#3b1f2b;
+  --muted:#7a4a5a;
+  --danger:#ff6b6b;
+  --radius:12px;
+  font-family: "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
 }
 
-header {
-  text-align: center;
-  padding: 40px 16px 20px 16px;
-  background-color: #283f38; /* พื้นหลัง Header เข้ม */
-  border-bottom: 2px solid #00ff80; /* เส้นแบ่งสีเขียวนีออน */
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+*{box-sizing:border-box}
+body{
+  margin:0;
+  background: linear-gradient(180deg, #fff0f6 0%, #fff7fb 100%);
+  color:var(--text);
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
 }
 
-header h1 {
-  margin-top: 0;
-  margin-bottom: 8px;
-  font-size: 32px;
-  color: #00ff80; /* หัวข้อสีเขียวนีออน */
-  letter-spacing: 1px;
-  text-shadow: 0 0 10px rgba(0, 255, 128, 0.8); /* เพิ่มเงาเรืองแสงที่หัวข้อ */
+.container{
+  max-width:980px;
+  margin:32px auto;
+  padding:24px;
 }
 
-header p {
-  margin: 0;
-  color: #a0cda8;
-  font-size: 16px;
+header h1{
+  margin:0 0 6px 0;
+  color:var(--accent-2);
+  font-size:1.6rem;
+  letter-spacing:0.6px;
 }
 
-main {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 25px;
-  padding: 40px 16px;
-  flex-grow: 1;
+.subtitle{
+  margin:0 0 18px 0;
+  color:var(--muted);
 }
 
-/* **สไตล์ของการ์ด (Article Card)** */
-article {
-  border: 1px solid #3d5a52; /* เส้นขอบเข้ม */
-  background-color: #283f38; /* พื้นหลังการ์ดเข้ม */
-  border-radius: 12px;
-  padding: 20px;
-  text-align: center;
-  max-width: 250px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
-  cursor: pointer;
-  transition: all 0.5s cubic-bezier(0.2, 0.8, 0.4, 1);
+.panel{
+  background:var(--card);
+  border-radius:var(--radius);
+  padding:16px;
+  box-shadow: 0 4px 18px rgba(139, 46, 98, 0.06);
+  margin-bottom:16px;
+  border:1px solid rgba(255,140,180,0.15);
 }
 
-/* **ลูกเล่นเมื่อโฮเวอร์ (Hover Effect: Neon Glow & Lift)** */
-article:hover {
-  transform: translateY(-12px) scale(1.05);
-  border-color: #00ff80;
-  box-shadow: 0 0 40px rgba(0, 255, 128, 0.7),
-              0 15px 30px rgba(0, 0, 0, 0.6);
-}
+.row{display:flex; gap:8px; align-items:center; margin-top:8px; flex-wrap:wrap}
 
-article img {
-  width: 100px;
-  height: 100px;
-  object-fit: contain;
-  margin-bottom: 15px;
-  /* **การแก้ไข: ลบขอบขาวของโลโก้ และเพิ่มเงาเรืองแสงนีออน** */
-  background-color: transparent; /* ทำให้พื้นหลังของรูปโปร่งใส (ถ้ามีพื้นหลังเดิม) */
-  border: none; /* ลบเส้นขอบ (ถ้ามี) */
-  filter: drop-shadow(0 0 8px rgba(0, 255, 128, 0.6)); /* เพิ่มเงาเรืองแสงนีออน */
-}
-
-article h2 {
-  margin: 10px 0 8px;
-  font-size: 22px;
-  color: #ffffff;
-}
-
-article p {
-  margin: 0 0 15px;
-  color: #a0cda8;
-  font-size: 15px;
-  min-height: 45px;
-}
-
-article button {
+.btn{
+  background: linear-gradient(180deg, var(--accent) 0%, var(--accent-2) 100%);
   border: none;
-  background: #00ff80;
-  color: #1c322b;
-  padding: 10px 20px;
-  border-radius: 25px;
-  cursor: pointer;
-  font-weight: 700;
-  letter-spacing: 0.5px;
-  transition: background-color 0.2s, transform 0.2s, box-shadow 0.2s;
+  color:white;
+  padding:8px 14px;
+  border-radius:10px;
+  cursor:pointer;
+  box-shadow: 0 6px 14px rgba(255,140,180,0.18);
+  font-weight:600;
 }
 
-article button:hover {
-  background-color: #00e573;
-  transform: translateY(-2px);
-  box-shadow: 0 5px 15px rgba(0, 255, 128, 0.6);
+.btn.ghost{
+  background:transparent;
+  color:var(--accent-2);
+  border:1px dashed rgba(255,140,180,0.3);
+  box-shadow:none;
 }
 
-footer {
-  text-align: center;
-  color: #a0cda8;
-  font-size: 13px;
-  padding: 20px 0;
-  margin-top: auto;
-  border-top: 1px solid #3d5a52;
-  background-color: #283f38;
+.btn.primary{ padding:10px 16px; font-size:0.95rem }
+.btn.danger{ background:linear-gradient(180deg, var(--danger), #ff8b8b) }
+
+.list-area{
+  margin-top:12px;
+  padding:10px;
+  border-radius:10px;
+  background:linear-gradient(180deg, rgba(255,250,253,0.6), rgba(255,244,250,0.6));
+  min-height:60px;
 }
 
-/* **สไตล์ Overlay (Modal) - จัดเต็มความอลังการ** */
-#overlay {
-  display: none;
-  position: fixed;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  background-color: rgba(0, 0, 0, 0.9);
-  justify-content: center;
-  align-items: center;
-  z-index: 999;
-  backdrop-filter: blur(10px);
+.form{ display:flex; flex-direction:column; gap:8px; margin-top:8px }
+.form-inline{ display:flex; gap:8px; align-items:center; margin-top:8px}
+
+label{ display:flex; flex-direction:column; font-size:0.9rem; color:var(--muted) }
+input, textarea{
+  padding:8px 10px;
+  border-radius:8px;
+  border:1px solid rgba(139,46,98,0.08);
+  background:linear-gradient(180deg,#fff,#fffefc);
+  margin-top:6px;
 }
 
-.overlay-box {
-  background-color: #1c322b;
-  border: 3px solid #00ff80;
-  border-radius: 15px;
-  padding: 30px;
-  max-width: 400px;
-  width: 90%;
-  text-align: center;
-  box-shadow: 0 0 60px rgba(0, 255, 128, 0.8),
-              inset 0 0 15px rgba(0, 255, 128, 0.3);
-  transform: scale(1);
-  animation: popin 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+.result{
+  background: #fff;
+  padding:10px;
+  border-radius:8px;
+  border:1px solid rgba(139,46,98,0.06);
+  margin-top:10px;
+  max-height:320px;
+  overflow:auto;
+  font-size:0.9rem;
 }
 
-@keyframes popin {
-  from {
-    opacity: 0;
-    transform: scale(0.6);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
-
-.overlay-box img {
-  width: 120px;
-  height: 120px;
-  object-fit: contain;
-  margin-bottom: 20px;
-  /* **การแก้ไข: ลบขอบขาวของโลโก้ใน Overlay และเพิ่มเงาเรืองแสงนีออน** */
-  background-color: transparent;
-  border: none;
-  filter: drop-shadow(0 0 10px rgba(0, 255, 128, 0.8)); /* เงาเรืองแสงที่ใหญ่ขึ้น */
-}
-
-.overlay-box h2 {
-    font-size: 32px;
-    margin-bottom: 10px;
-    color: #00ff80;
-    text-shadow: 0 0 5px rgba(0, 255, 128, 0.6);
-}
-
-.overlay-box p {
-    font-size: 17px;
-    color: #d0ffd0;
-    margin-bottom: 25px;
-}
-
-
-.overlay-box a,
-.overlay-box button {
-  display: inline-block;
-  border: none;
-  border-radius: 25px;
-  padding: 10px 20px;
-  text-decoration: none;
-  cursor: pointer;
-  margin: 5px;
-  font-weight: 700;
-  letter-spacing: 0.5px;
-  transition: background-color 0.3s, transform 0.1s, box-shadow 0.3s;
-}
-
-.overlay-box a {
-    background-color: #3498db;
-    color: #ffffff;
-}
-
-.overlay-box a:hover {
-    background-color: #2980b9;
-    transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(52, 152, 219, 0.5);
-}
-
-.overlay-box button {
-    background-color: #e74c3c;
-    color: #ffffff;
-}
-
-.overlay-box button:hover {
-    background-color: #c0392b;
-    transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(231, 76, 60, 0.5);
-}
-
-
-body.modal-open {
-  overflow: hidden;
-}
+.grid-2{ display:grid; grid-template-columns: 1fr 1fr; gap:16px }
+@media (max-width:800px){ .grid-2{ grid-template-columns: 1fr } .container{padding:14px}}
+footer{ margin-top:8px; color:var(--muted); font-size:0.85rem }
+code{ background: #fff0f3; padding:2px 6px; border-radius:5px; color:#86164c }
